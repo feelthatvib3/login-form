@@ -7,11 +7,9 @@ import 'app/styles/index.css';
 
 import { queryClient } from 'shared/api/query-client';
 
-if (import.meta.env.DEV) {
-  import('features/auth/lib/fetch-login-mock').then(({ setupLoginFetchMock }) => {
-    setupLoginFetchMock();
-  });
-}
+import('features/auth/lib/fetch-login-mock').then(({ setupLoginFetchMock }) => {
+  setupLoginFetchMock();
+});
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
