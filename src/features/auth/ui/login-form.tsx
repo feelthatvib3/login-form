@@ -82,6 +82,8 @@ export function LoginForm() {
             placeholder="Password"
             autoComplete="current-password"
             type="password"
+            aria-invalid={!!errors.password}
+            aria-describedby={errors.email ? 'password-error' : undefined}
             className={cn(errors.password && 'border-destructive')}
           />
           {errors.password && (
