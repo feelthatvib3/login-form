@@ -5,7 +5,7 @@ import { Button } from 'shared/ui/button';
 
 export function GithubOAuthButton() {
   const handleGithubAuth = () => {
-    window.location.href = `${API_URL}/api/auth/github`;
+    window.location.href = `${API_URL}/auth/github`;
   };
 
   return (

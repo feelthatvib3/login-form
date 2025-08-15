@@ -6,7 +6,7 @@ interface MeResponse {
 }
 
 export async function me(): Promise<MeResponse> {
-  const res = await fetch(`${API_URL}/api/auth/me`, {
+  const res = await fetch(`${API_URL}/auth/me`, {
     method: 'GET',
     credentials: 'include'
   });
