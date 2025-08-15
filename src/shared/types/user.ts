@@ -1,5 +1,8 @@
 export interface User {
-  id: string;
-  email: string;
-  name: string;
+  id: number;
+  email: string | null;
+  name: string | null;
+  avatarUrl: string | null;
+  githubId: string | null;
+  createdAt: string;
 }

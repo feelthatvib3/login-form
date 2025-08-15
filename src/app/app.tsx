@@ -1,14 +1,41 @@
-import { LoginForm } from 'features/auth';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+
+import { HomePage } from 'pages/home';
+import { LoginPage } from 'pages/login';
+import { RegisterPage } from 'pages/register';
+
+import { ProtectedRoute } from 'widgets/routes/protected-route';
+import { PublicRoute } from 'widgets/routes/public-route';
 
 export function App() {
   return (
-    <main className="">
-      <div className="flex min-h-dvh items-center justify-center">
-        <div className="flex w-full flex-col items-center space-y-6 px-4">
-          <h1 className="text-3xl font-medium tracking-tight">Log in to Acme</h1>
-          <LoginForm />
-        </div>
-      </div>
-    </main>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }

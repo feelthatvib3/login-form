@@ -1,6 +1,6 @@
 import { SpinnerIcon } from '@phosphor-icons/react';
 import { type VariantProps } from 'class-variance-authority';
-import { type ComponentPropsWithoutRef, type ElementType } from 'react';
+import { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from 'react';
 
 import { cn } from 'shared/lib/cn';
 import { buttonVariants } from 'shared/ui/button';
@@ -8,6 +8,7 @@ import { buttonVariants } from 'shared/ui/button';
 type ButtonProps<T extends ElementType = 'button'> = {
   as?: T;
   loading?: boolean;
+  icon?: ReactNode;
 } & ComponentPropsWithoutRef<T> &
   VariantProps<typeof buttonVariants>;
 
@@ -18,6 +19,7 @@ export function Button<T extends ElementType = 'button'>({
   size,
   loading,
   children,
+  icon,
   ...props
 }: ButtonProps<T>) {
   const Comp = as || 'button';
@@ -28,7 +30,7 @@ export function Button<T extends ElementType = 'button'>({
       disabled={loading}
       {...props}
     >
-      {loading && <SpinnerIcon className="size-5 animate-spin" />}
+      {loading ? <SpinnerIcon className="size-5 animate-spin" /> : icon}
       {children}
     </Comp>
   );

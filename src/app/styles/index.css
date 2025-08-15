@@ -1,5 +1,5 @@
-@import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import 'tailwindcss';
 
 :root {
   --radius: 0.625rem;
@@ -9,7 +9,7 @@
   --card-foreground: oklch(0.985 0 0);
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
+  --secondary: oklch(0.175 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
@@ -44,7 +44,11 @@
 @layer base {
   body {
     background-color: var(--background);
-    background-image: url('../../../public/topography.svg');
+    background-image: url('/topography.svg');
     color: var(--foreground);
+  }
+
+  * {
+    @apply border-border;
   }
 }

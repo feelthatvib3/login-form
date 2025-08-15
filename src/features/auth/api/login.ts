@@ -1,4 +1,4 @@
-import type { User } from 'shared/types/user';
+import { API_URL } from 'shared/constants/app';
 
 export interface LoginParams {
   email: string;
@@ -6,11 +6,11 @@ export interface LoginParams {
 }
 
 interface LoginResponse {
-  user: User;
+  success: boolean;
 }
 
 export async function login({ email, password }: LoginParams): Promise<LoginResponse> {
-  const res = await fetch('/api/login', {
+  const res = await fetch(`${API_URL}/api/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
@@ -19,7 +19,7 @@ export async function login({ email, password }: LoginParams): Promise<LoginResp
   if (!res.ok) {
     const errorData = await res.json().catch(() => null);
     throw new Error(
-      errorData?.message || `Unable to log in. Server responded with status ${res.status}.`
+      errorData?.error || `Unable to log in. Server responded with status ${res.status}.`
     );
   }
 
