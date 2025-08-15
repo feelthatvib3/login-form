@@ -2,7 +2,8 @@ import { API_URL } from 'shared/constants/app';
 import type { User } from 'shared/types/user';
 
 interface MeResponse {
-  user: User;
+  authenticated: boolean;
+  user?: User;
 }
 
 export async function me(): Promise<MeResponse> {

@@ -14,7 +14,9 @@ export function PublicRoute({ children }: Readonly<{ children: ReactNode }>) {
     return null;
   }
 
-  if (data?.user) return <Navigate to="/" replace />;
+  if (data && data.user) {
+    return <Navigate to="/" replace />;
+  }
 
   return children;
 }

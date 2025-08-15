@@ -6,7 +6,7 @@ import { Navigate } from 'react-router-dom';
 import { ME_QUERY_KEY, me } from 'features/auth';
 
 export function ProtectedRoute({ children }: Readonly<{ children: ReactNode }>) {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: [ME_QUERY_KEY],
     queryFn: me
   });
@@ -22,7 +22,7 @@ export function ProtectedRoute({ children }: Readonly<{ children: ReactNode }>) 
     );
   }
 
-  if (isError || !data?.user) return <Navigate to="/login" replace />;
+  if (!data) return <Navigate to="/login" replace />;
 
   return children;
 }
