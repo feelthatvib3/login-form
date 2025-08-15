@@ -10,7 +10,10 @@ export function PublicRoute({ children }: Readonly<{ children: ReactNode }>) {
     queryFn: me
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return null;
+  }
+
   if (data?.user) return <Navigate to="/" replace />;
 
   return children;
