@@ -7,6 +7,7 @@ export interface LoginParams {
 
 interface LoginResponse {
   success: boolean;
+  token: string;
 }
 
 export async function login({ email, password }: LoginParams): Promise<LoginResponse> {

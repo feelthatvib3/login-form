@@ -31,7 +31,8 @@ export function LoginForm() {
 
   const { mutate, isPending, error } = useMutation({
     mutationFn: login,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      localStorage.setItem('token', data.token);
       navigate('/', { replace: true });
     }
   });

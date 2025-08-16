@@ -1,5 +1,4 @@
 import { API_URL } from 'shared/constants/app';
-import type { User } from 'shared/types/user';
 
 export interface RegisterParams {
   email: string;
@@ -7,7 +6,8 @@ export interface RegisterParams {
 }
 
 interface RegisterResponse {
-  user: User;
+  success: boolean;
+  token: string;
 }
 
 export async function register({ email, password }: RegisterParams): Promise<RegisterResponse> {

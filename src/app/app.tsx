@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import { AuthErrorPage } from 'pages/auth-error';
+import { AuthSuccessPage } from 'pages/auth-success';
 import { HomePage } from 'pages/home';
 import { LoginPage } from 'pages/login';
 import { RegisterPage } from 'pages/register';
@@ -33,6 +34,14 @@ export function App() {
           element={
             <PublicRoute>
               <RegisterPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/auth/success"
+          element={
+            <PublicRoute>
+              <AuthSuccessPage />
             </PublicRoute>
           }
         />

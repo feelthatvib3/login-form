@@ -49,9 +49,10 @@ export function RegisterForm() {
     }
   });
 
-  const { mutate, isPending, error, data } = useMutation({
+  const { mutate, isPending, error } = useMutation({
     mutationFn: registerUser,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      localStorage.setItem('token', data.token);
       navigate('/');
     }
   });
@@ -71,12 +72,6 @@ export function RegisterForm() {
           <AlertDescription>
             {error instanceof Error ? error.message : 'Something went wrong. Please try again.'}
           </AlertDescription>
-        </Alert>
-      )}
-
-      {data && (
-        <Alert variant="success" role="alert-success">
-          <AlertDescription>Successfully logged in as {data.user.name}.</AlertDescription>
         </Alert>
       )}
 
